@@ -19,15 +19,18 @@ const CountrySearch = () => {
     };
 
     fetchData();
-  }, [searchTerm]);
+  }, [searchTerm, countries]);
 
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
   };
 
-  const filteredCountries = countries.filter((country) =>
-    country.name.common.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredCountries = countries.filter(
+    (country) =>
+      country.name.common.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      country.name.official.toLowerCase().includes(searchTerm.toLowerCase())
   );
+  
 
   return (
     <div
