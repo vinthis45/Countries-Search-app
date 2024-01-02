@@ -3,8 +3,7 @@ import React, { useState, useEffect } from "react";
 const CountrySearch = () => {
   const [countries, setCountries] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [countriesSet, setCountriesSet] = useState(new Set());
-
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -13,11 +12,7 @@ const CountrySearch = () => {
           throw new Error("Failed to fetch countries data");
         }
         const data = await response.json();
-
-        // Create a Set from the common names
-        const countriesSet = new Set(data.map((country) => country.name.common.toLowerCase()));
-        setCountriesSet(countriesSet);
-
+  
         setCountries(data);
       } catch (error) {
         console.error(error);
@@ -31,11 +26,10 @@ const CountrySearch = () => {
     setSearchTerm(e.target.value);
   };
 
-  // Filter countries based on searchTerm using Set
+  
   const filteredCountries = countries.filter(
     (country) =>
-      country.name.common.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      countriesSet.has(searchTerm.toLowerCase())
+      country.name.common.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
