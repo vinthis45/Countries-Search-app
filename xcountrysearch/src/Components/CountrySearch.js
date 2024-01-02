@@ -19,7 +19,7 @@ const CountrySearch = () => {
     };
 
     fetchData();
-  }, [searchTerm, countries]);
+  }, [searchTerm]);
 
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
@@ -27,7 +27,7 @@ const CountrySearch = () => {
 
   const filteredCountries = countries.filter(
     (country) =>
-      country.name.common.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      country.name.common.toLowerCase().includes(searchTerm.toLowerCase()) &&
       country.name.official.toLowerCase().includes(searchTerm.toLowerCase())
   );
   
