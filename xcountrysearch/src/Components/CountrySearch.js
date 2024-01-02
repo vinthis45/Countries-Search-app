@@ -61,30 +61,34 @@ const CountrySearch = () => {
           justifyContent: "center",
         }}
       >
-        {filteredCountries.map((country) => (
-          <div
-            key={country.cca2}
-            style={{
-              width: "200px",
-              border: "1px solid #ccc",
-              borderRadius: "10px",
-              margin: "10px",
-              padding: "10px",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <img
-              className="flag"
-              src={country.flags.svg}
-              alt={country.name.common}
-              style={{ width: "100px", height: "60px" }}
-            />
-            <h2>{country.name.common}</h2>
-          </div>
-        ))}
+        {filteredCountries.length > 0 ? (
+          filteredCountries.map((country) => (
+            <div
+              key={country.cca2}
+              style={{
+                width: "200px",
+                border: "1px solid #ccc",
+                borderRadius: "10px",
+                margin: "10px",
+                padding: "10px",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <img
+                className="flag"
+                src={country.flags.svg}
+                alt={country.name.common}
+                style={{ width: "100px", height: "60px" }}
+              />
+              <h2>{country.name.common}</h2>
+            </div>
+          ))
+        ) : (
+          <p>No matching countries found</p>
+        )}
       </div>
     </div>
   );
