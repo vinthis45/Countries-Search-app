@@ -20,7 +20,7 @@ const CountrySearch = () => {
     };
 
     fetchData();
-  }, []);
+  }, [searchTerm]);
 
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
