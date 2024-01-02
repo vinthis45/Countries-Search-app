@@ -44,12 +44,12 @@ const CountrySearch = () => {
                 {filteredCountries.map((country) => (
                     <div key={country.cca2} className={styles.card}>
                         <img
-
+                            className="flag"
                             src={country.flags.svg}
                             alt={country.name.common}
                             style={{ width: "100px", height: "60px" }}
                         />
-                        <p>{country.name.common}</p>
+                        <p className="name">{country.name.common}</p>
                     </div>
                 ))}
             </div>
